@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Photo Sharing App</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .photo {
+            margin: 20px;
+        }
+
+        .like-button {
+            background: none;
+            border: none;
+        }
+
+        .like-button .fa-heart-o {
+            color: #000;
+        }
+
+        .like-button .fa-heart {
+            color: #f00;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="photo">
+        <img src="photo.jpg" alt="Photo">
+        <button class="like-button" onclick="likePhoto()">
+            <em class="fa fa-heart-o"></em>
+        </button>
+        <span class="like-counter">0</span>
+        <div class="comments-section">
+            <label for="comment-input">Add a comment:</label>
+            <input type="text" id="comment-input" class="comment-input" placeholder="Add a comment...">
+            <button onclick="addComment()">Post</button>
+            <div class="comments">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Our Photo App</p>
+        <a href="https://twitter.com/ourphotoapp">Twitter</a>
+        <a href="https://instagram.com/ourphotoapp">Instagram</a>
+    </footer>
+
+<script>
+    let likes = 0;
+
+    function likePhoto() {
+        let likeButton = document.querySelector('.like-button');
+        likeButton.innerHTML = '<em class="fa fa-heart"></em>';
+        likes += 1;
+        document.querySelector('.like-counter').innerText = likes;
+    }
+
+    function addComment() {
+        let commentInput = document.querySelector('.comment-input');
+        let comment = document.createElement('p');
+        comment.innerText = commentInput.value;
+        document.querySelector('.comments').appendChild(comment);
+        commentInput.value = '';
+    }
+</script>
+</body>
+</html>
